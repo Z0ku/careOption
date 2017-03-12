@@ -1,0 +1,44 @@
+To Do List:
+
+	Minor Pages
+		About	
+		Contact
+		News
+
+	Database
+		Add proper database, Auto Increment userId, employeeId, ownerId
+
+	modifyuser
+		Add Role Function
+		userId needs to be NULL (Auto Increment)
+		Delete users with foreign keys (such as employees who had orders and users with orders)
+
+	order
+		In add to order, need to include file
+
+	CSS
+		Correspond to the screenshot, resolution is currently 1920X1080
+		Include bootstrap, CSS classes are different as they are from previous projects (such as users and inventory for the left and right tables)
+
+
+Done:
+	admin
+	client
+	employee
+	index
+	register	(Need to add "Successfuly Registered" message)
+
+To Do Later:
+	aboutorder
+	forgotpass
+	manageaccount
+
+PHP Functions:
+	library
+	logout
+	menu
+
+Other functionalities:
+	Prices of the orders
+	Announcement thing (pretty useless and no need)
+	

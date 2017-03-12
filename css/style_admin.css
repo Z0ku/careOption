@@ -1,0 +1,141 @@
+
+#admin{
+    background-color: rgba(0,0,0,0.5);
+	width: 96%;
+	height: 90%;
+	color: white;
+	top:5.5%;
+	left:2%;
+	text-align: center;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+#title{
+    font-size: 20px;
+	margin-top: 5%;
+    margin-bottom: -12%;
+        
+}
+
+#user{
+    position:absolute;
+    margin-top: 14%;
+    margin-left: 2%;
+    width: 45%;
+}
+
+#modifyusertable{
+    position:absolute;
+    margin-top: 14%;
+    margin-left: 2%;
+    width: 63%;
+}
+
+#inventory{
+    position:absolute;
+    margin-top: 14%; 
+    margin-left: 52%;
+    float:right;
+    width: 45%;
+}
+
+#modifyinventorytable{
+    position:absolute;
+    margin-top: 14%;
+    margin-left: 50%;
+    float:right;
+    width: 850px;
+}
+
+#userdesc{
+    font-size:28px;
+    text-align: right;
+}
+
+#inventorydesc{
+    font-size:28px;
+    text-align: left;
+}
+
+#modifylink{
+    position: absolute;
+    left:42%;
+    top:40%;
+
+}
+
+#storebtn{
+    position:relative;
+    bottom: 8%;
+    left: 46%;
+    position: fixed;
+    font-size: 22px;
+    opacity: 0.8;
+}
+
+#modifyuserbtn{
+    position:relative;
+    bottom: 8%;
+    left: 36%;
+    position: fixed;
+    font-size: 22px;
+    opacity: 0.8;
+}
+
+
+#approvebtn{
+    position:relative;
+    bottom: 8%;
+    left: 56%;
+    position: fixed;
+    font-size: 22px;
+    opacity: 0.8;
+}
+
+#modifyuserbox{
+        background-color: rgba(0,0,0,0.6);
+	width: 30%;
+	height: 65%;
+	color: white;
+	position: fixed;
+	top:25%;
+	left:67%;
+	text-align: center;
+        padding: 15px;
+        padding-top: 40px;
+}
+
+
+#modifyinventorybox{
+    background-color: rgba(0,0,0,0.8);
+	width: 40%;
+	height: 60%;
+	color: white;
+	position: fixed;
+	top:30%;
+	left:6%;
+	text-align: center;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+#modifyuser{
+    padding-left: 15px;
+    text-align: left;
+}
+
+.error{
+      font-size: 18px;
+      text-align: left;
+      padding-left: 15px;
+      margin-bottom: 10px;
+      color: red;
+}  
+
+.deletebtn{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
