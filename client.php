@@ -8,12 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="icon.png" />
         <title>Dashboard - Care Option</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <link rel="stylesheet" type="text/css" href="css/client.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-        <link rel="stylesheet" type="text/css" href="css/style_form.css" />
-        <link rel="stylesheet" type="text/css" href="css/style_admin.css" />
-        <link rel="stylesheet" type="text/css" href="css/style_table.css" />
+        <?php include 'csslinks.php' ?>
     </head>
     <body>
 	<ul class="bg-slideshow">
@@ -56,45 +51,24 @@
 
             <form action="client.php" method="post">
             <div id="user">
+
                 <p id="userdesc">Order History</p>
+                <input style='height:50px;width:100%' type="text" placeholder="Search Your Order History" id='searchHistory' autocomplete="off" value=""/>
+
                     <div class="table">
                     <table class="table-fill">
                            <thead>
                                 <tr id="right">
-                                    <th class="text-left">ID</th>
-                                    <th class="text-left">Name</th>
-                                    <th class="text-left">Date</th>
-                                    <th class="text-left">Add to Order</th>
-                                    <th class="text-left">Download</th>
-                                    <th class="text-left">Details</th>
+                                    <th class="text-right">ID</th>
+                                    <th class="text-right">Name</th>
+                                    <th class="text-right">Date</th>
+                                    <th class="text-right">Add to Order</th>
+                                    <th class="text-right">Download</th>
+                                    <th class="text-right">Details</th>
                                 </tr>
                             </thead>
-                        <tbody class="table-hover">
-
-                        <?php                                                                           //Display Order History
-                            $conn = connectDB();                                                        //Connect to database function
-
-                            $sql = "SELECT * FROM printorders WHERE orderStatus = 3 AND userId = ".$_SESSION['userId'];
-                            $result = $conn->query($sql);
-
-                            if ($result->num_rows > 0) {                                                //Output data of each row
-                                while($row = $result->fetch_assoc()) {
-                                    echo '
-                                    <tr id="right">
-                                        <td>'.$row["orderId"].'</td>
-                                        <td>'.$row["orderName"].'</td>
-                                        <td>'.$row["orderDate"].'</td>
-                                        <td><button type="button"  data-id="'.$row["orderId"].'" class="button deletebtn resendOrder"  data-toggle="modal" data-target="#order" />Order</button></td>
-                                        <td><button type="submit" name="download" value="'.$row["orderId"].'" class="button deletebtn"/>&nbsp;&nbsp;DL&nbsp;&nbsp;</button></td>
-                                        <td><button type="button" data-toggle="modal" data-target="#orderDetails" data-id="'.$row["orderId"].'" class="button viewDetails"/>&nbsp;&nbsp;View&nbsp;&nbsp;</button></td>
-                                    </tr>
-                                    ';
-                                }
-                            } else {
-                                echo "<h4>No Order History</h4>";
-                            }
-                            $conn->close();
-                        ?>
+                        <tbody class="table-hover" id='orderHistory'>
+                        <?php include 'clientOrderHistory.php'; ?>
                         </tbody>
                     </table>
                     </div>
@@ -166,9 +140,5 @@
           <?php include 'orderDetailsModal.php';?>
     </body>
 </html>
-<script src='js/jquery.min.js'></script>
+<?php include 'jslinks.php'; ?>
 <script src='js/client.js'></script>
-<script src="js/index.js"></script>
-<script src='js/bootstrap.min.js'></script>
-<script>
-</script>

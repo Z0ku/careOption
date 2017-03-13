@@ -1,12 +1,15 @@
-$('#orderType').change(function(){
+function getSpecs(type){
   $.ajax({
     url: "getSpecs.php",
     method: "GET",
-    data:{type:$(this).val()},
+    data:{type:type},
     success: function(specs){
       $('#specs').html(specs);
     }
   })
+}
+$('#orderType').change(function(){
+  getSpecs($(this).val());
 });
 // Ajax submit
 // $('#placeOrder').on('click',function(){
@@ -22,19 +25,23 @@ $('#orderType').change(function(){
 //     }
 //   });
 // });
-$('.viewDetails').on('click',function(){
-  var id = $(this).data('id');
-  $.ajax({
-    url: '/orderDetails.php',
-    type: "GET",
-    data: {id:id},
-    success: function(data){
-      $('#orderDetails').find('.modal-body').html(data);
-    }
-  })
-});
 
-$('.resendOrder').on('click',function(){
+var searchHistoryInterval;
+$('#searchHistory').on('keyup',function(){
+  clearInterval(searchHistoryInterval);
+  var search = $(this).val();
+  searchHistoryInterval  = setTimeout(function(){
+      $.ajax({
+        url: 'clientOrderHistory.php',
+        type:"GET",
+        data:{search:search},
+        success: function(result){
+          $('#orderHistory').html(result);
+        }
+      })
+    },500);
+});
+$(document).on('click','.resendOrder',function(){
   var id = $(this).data('id');
   $.ajax({
     url: '/resendOrder.php',
@@ -45,7 +52,9 @@ $('.resendOrder').on('click',function(){
       for(var key in data){
         $('#order').find('.modal-body').find('[name='+key+']').val(data[key]);
       }
-        $('#order').find('.modal-body').find('label').addClass('active');
+      getSpecs(data['orderType']);
+      $('#order').find('.modal-body').find('[name="specs"]').val(data['specs']);
+      $('#order').find('.modal-body').find('label').addClass('active');
     }
   })
 });

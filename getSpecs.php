@@ -11,7 +11,10 @@
     )
   );
   // echo "TEST";
-  $type = $_GET['type'];
+  if(isset($_GET['type'])){
+    $type = $_GET['type'];    
+  }
+
   $specs = $specArr[$type];
   foreach($specs as $spec){
     echo "<option value='{$spec}'>{$spec}</option>";

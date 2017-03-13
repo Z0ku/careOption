@@ -7,7 +7,7 @@
 	if(isset($_SESSION['role'])){
 		echo '<a href="logout.php" class="btn btn-head">Logout</a>';
 		$list = array(
-						"Announcement" => "news.php", 
+						"Announcement" => "news.php",
 						"About" =>"about.php",
 						"Contact" =>"contact.php",
 						"Manage Account" =>"manageaccount.php"
@@ -15,7 +15,7 @@
 	}else{
 		echo '<a href="contact.php?page=index"  class="btn btn-head">Contact</a>';
 		$list = array(
-						"About" => "about.php", 
+						"About" => "about.php",
 						"Announcement" =>"news.php"
 					);
 

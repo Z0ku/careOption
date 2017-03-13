@@ -38,20 +38,21 @@ a:active {
 
 /*start of background*/
 .bg-slideshow,
-.bg-slideshow:after { 
+.bg-slideshow:after {
     position: fixed;
     width: 100%;
     height: 96.5%;
     top: 0px;
     left: 0px;
-    z-index: -1; 
+    z-index: -1;
     margin-top: 35px;
+		background-color: black;
 }
-.bg-slideshow:after { 
+.bg-slideshow:after {
     content: '';
-    background: transparent url(../bg/pattern.png) repeat top left; 
+    background: transparent url(../bg/pattern.png) repeat top left;
 }
-.bg-slideshow li span { 
+.bg-slideshow li span {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -68,9 +69,9 @@ a:active {
     -moz-animation: imageAnimation 36s linear infinite 0s;
     -o-animation: imageAnimation 36s linear infinite 0s;
     -ms-animation: imageAnimation 36s linear infinite 0s;
-    animation: imageAnimation 36s linear infinite 0s; 
+    animation: imageAnimation 36s linear infinite 0s;
 }
-.bg-slideshow li div { 
+.bg-slideshow li div {
     z-index: 1000;
     position: absolute;
     bottom: 30px;
@@ -83,68 +84,68 @@ a:active {
     -moz-animation: titleAnimation 36s linear infinite 0s;
     -o-animation: titleAnimation 36s linear infinite 0s;
     -ms-animation: titleAnimation 36s linear infinite 0s;
-    animation: titleAnimation 36s linear infinite 0s; 
+    animation: titleAnimation 36s linear infinite 0s;
 }
-.bg-slideshow li div h3 { 
+.bg-slideshow li div h3 {
     font-family: 'Avenir', sans-serif;
     font-size: 240px;
     padding: 0;
-    line-height: 200px; 
+    line-height: 200px;
 }
--slideshow li:nth-child(1) span { 
-    background-image: url(../bg/bg.jpg) 
+-slideshow li:nth-child(1) span {
+    background-image: url(../bg/bg.jpg)
 }
-.bg-slideshow li:nth-child(1) span { 
+.bg-slideshow li:nth-child(1) span {
     background-image: url(../bg/bg.jpg);
     -webkit-animation-delay: 0s;
     -moz-animation-delay: 0s;
     -o-animation-delay: 0s;
     -ms-animation-delay: 0s;
-    animation-delay: 0s; 
+    animation-delay: 0s;
 }
-.bg-slideshow li:nth-child(2) span { 
+.bg-slideshow li:nth-child(2) span {
     background-image: url(../bg/bg2.jpg);
     -webkit-animation-delay: 6s;
     -moz-animation-delay: 6s;
     -o-animation-delay: 6s;
     -ms-animation-delay: 6s;
-    animation-delay: 6s; 
+    animation-delay: 6s;
 }
-.bg-slideshow li:nth-child(3) span { 
+.bg-slideshow li:nth-child(3) span {
     background-image: url(../bg/bg3.jpg);
     -webkit-animation-delay: 12s;
     -moz-animation-delay: 12s;
     -o-animation-delay: 12s;
     -ms-animation-delay: 12s;
-    animation-delay: 12s; 
+    animation-delay: 12s;
 }
-.bg-slideshow li:nth-child(4) span { 
+.bg-slideshow li:nth-child(4) span {
     background-image: url(../bg/bg4.jpg);
     -webkit-animation-delay: 18s;
     -moz-animation-delay: 18s;
     -o-animation-delay: 18s;
     -ms-animation-delay: 18s;
-    animation-delay: 18s; 
+    animation-delay: 18s;
 }
-.bg-slideshow li:nth-child(5) span { 
+.bg-slideshow li:nth-child(5) span {
     background-image: url(../bg/bg5.jpg);
     -webkit-animation-delay: 24s;
     -moz-animation-delay: 24s;
     -o-animation-delay: 24s;
     -ms-animation-delay: 24s;
-    animation-delay: 24s; 
+    animation-delay: 24s;
 }
-.bg-slideshow li:nth-child(6) span { 
+.bg-slideshow li:nth-child(6) span {
     background-image: url(../bg/bg6.jpg);
     -webkit-animation-delay: 30s;
     -moz-animation-delay: 30s;
     -o-animation-delay: 30s;
     -ms-animation-delay: 30s;
-    animation-delay: 30s; 
+    animation-delay: 30s;
 }
 
 /* Animation for the slideshow images */
-@-webkit-keyframes imageAnimation { 
+@-webkit-keyframes imageAnimation {
     0% { opacity: 0;
     -webkit-animation-timing-function: ease-in; }
     8% { opacity: 1;
@@ -153,7 +154,7 @@ a:active {
     25% { opacity: 0 }
     100% { opacity: 0 }
 }
-@-moz-keyframes imageAnimation { 
+@-moz-keyframes imageAnimation {
     0% { opacity: 0;
     -moz-animation-timing-function: ease-in; }
     8% { opacity: 1;
@@ -162,7 +163,7 @@ a:active {
     25% { opacity: 0 }
     100% { opacity: 0 }
 }
-@-o-keyframes imageAnimation { 
+@-o-keyframes imageAnimation {
     0% { opacity: 0;
     -o-animation-timing-function: ease-in; }
     8% { opacity: 1;
@@ -171,7 +172,7 @@ a:active {
     25% { opacity: 0 }
     100% { opacity: 0 }
 }
-@-ms-keyframes imageAnimation { 
+@-ms-keyframes imageAnimation {
     0% { opacity: 0;
     -ms-animation-timing-function: ease-in; }
     8% { opacity: 1;
@@ -217,6 +218,7 @@ header {
 	left: 0;
 	top: 0;
 	box-shadow: 0px 3px 5px;
+	padding-top: 10px;
 }
 
 input{
@@ -226,8 +228,7 @@ input{
 
 #nav{
 	float: right;
-	margin-top: -3px;
-	margin-right: 5%;
+	margin-right: 5%
 }
 
 li {
@@ -236,7 +237,8 @@ li {
 }
 
 .navlink {
-        margin-right: 40px;
+	margin-right: 40px;
+	margin-top: 40px;
 	text-decoration: none;
 	color: #888;
 }
@@ -256,7 +258,7 @@ li {
 
 
 .btn {
-  
+
   font-size: 15px;
   border-radius: 6px;
   -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
@@ -266,17 +268,17 @@ li {
   color: #fff;
   background-color: red;
 }
-  
+
 .error{
     font-size: 12px;
     text-align: left;
     padding-left: 15px;
     margin-bottom: -10px;
     color: red;
-  
-}  
 
-  
+}
+
+
  #login {
 	background-color: rgba(0,0,0,0.6);
 	width: 20%;
@@ -304,7 +306,7 @@ li {
     padding-left: 15px;
 }
 
- 
+
 #logindesc {
     text-align: left;
     font-size: 14px;
@@ -380,7 +382,5 @@ li {
   }
  .btn-head{
     padding: 6px 22px;
-    line-height: 1;  
+    line-height: 1;
   }
-  
-  

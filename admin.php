@@ -1,7 +1,7 @@
 <?php //Starts session
     include("library.php");
     startsession("admin")
-?>  
+?>
 
 <!DOCTYPE html>
 <html>
@@ -9,10 +9,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="icon.png" />
         <title>Admin Dashboard - Care Option</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <link rel="stylesheet" type="text/css" href="css/style_form.css" />
-        <link rel="stylesheet" type="text/css" href="css/style_admin.css" />
-        <link rel="stylesheet" type="text/css" href="css/style_table.css" />
+        <?php include 'csslinks.php' ?>
+
 
     </head>
     <body>
@@ -24,7 +22,7 @@
             <li><span>Image 05</span><div><h3></h3></div></li>
             <li><span>Image 06</span><div><h3></h3></div></li>
     </ul>
-        
+
     <header>
         <a  href="admin.php">
             <img id="homebtn" src="img/home.jpg"  alt="Home">
@@ -33,7 +31,7 @@
             include("menu.php");
         ?>
     </header>
-        
+
         <!-- Do not modify anything above -->
 
         <?php
@@ -49,17 +47,17 @@
             }else if(isset($_POST['download'])){
                 downloadFile();
             }
-        
+
         ?>
         <div id="admin">
             <div id="logo">
                 <p><a href="admin.php"><img id="logopic" src="logo.png" alt="Company"/></a></p>
             </div>
-            
+
             <div id="title">
-                <h1><?php echo $_SESSION['name'].'&#39;s';?> Dashboard</h1>    
+                <h1><?php echo $_SESSION['name'].'&#39;s';?> Dashboard</h1>
             </div>
-            
+
             <div id="user">
             <p id="userdesc">Users</p>
             <div class="table">
@@ -111,7 +109,7 @@
             </table>
             </div>
             </div>
-            
+
             <div id="inventory">
             <p id="inventorydesc">Orders Pending Approval</p>
             <div class="table">
@@ -148,8 +146,9 @@
                                 <td>'.$row["orderDate"].'</td>
                                 <td>'.$row["specs"].'</td>
                                 <td>'.$row["noOfCopies"].'</td>
-                                <td><button type="submit" name="approve" value="'.$row["orderId"].'" class="button deletebtn"/>Approve</button></td>   
+                                <td><button type="submit" name="approve" value="'.$row["orderId"].'" class="button deletebtn"/>Approve</button></td>
                                 <td><button type="submit" name="download" value="'.$row["orderId"].'" class="button deletebtn"/>&nbsp;&nbsp;DL&nbsp;&nbsp;</button></td>
+                                <td><button type="button" data-toggle="modal" data-target="#orderDetails" data-id="'.$row["orderId"].'" class="button viewDetails"/>&nbsp;&nbsp;View&nbsp;&nbsp;</button></td>
                             </tr>
                             ';
                         }
@@ -170,5 +169,8 @@
         <!-- Do not modify anything below -->
         <footer>
         </footer>
+        <?php include 'orderDetailsModal.php';?>
+
     </body>
 </html>
+<?php include 'jslinks.php'; ?>
