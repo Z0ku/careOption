@@ -9,3 +9,6 @@ $(document).on('click','.viewDetails',function(){
     }
   })
 });
+$(document).on('click','.decline',function(){
+  $('#declineOrder').modal('show');
+});

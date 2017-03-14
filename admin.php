@@ -46,6 +46,8 @@
                 $result = $conn->query($sql);
             }else if(isset($_POST['download'])){
                 downloadFile();
+            }else if($_POST['decline']) {
+                declineOrder();
             }
 
         ?>
@@ -120,10 +122,11 @@
                         <th class="text-left">Client</th>
                         <th class="text-left">Name</th>
                         <th class="text-left">Date</th>
-                        <th class="text-left">Specs</th>
                         <th class="text-left">Copies</th>
+                        <th class="text-left">Decline</th>
                         <th class="text-left">Approve</th>
                         <th class="text-left">Download</th>
+                        <th class="text-left">Details</th>
                     </tr>
                 </thead>
                 <tbody class="table-hover">
@@ -144,8 +147,8 @@
                                 <td>'.$row["name"].'</td>
                                 <td>'.$row["orderName"].'</td>
                                 <td>'.$row["orderDate"].'</td>
-                                <td>'.$row["specs"].'</td>
                                 <td>'.$row["noOfCopies"].'</td>
+                                <td><button type="button" data-toggle="modal" data-target="#declineOrder" data-id="'.$row["orderId"].'" class="button decline"/>Decline</button></td>
                                 <td><button type="submit" name="approve" value="'.$row["orderId"].'" class="button deletebtn"/>Approve</button></td>
                                 <td><button type="submit" name="download" value="'.$row["orderId"].'" class="button deletebtn"/>&nbsp;&nbsp;DL&nbsp;&nbsp;</button></td>
                                 <td><button type="button" data-toggle="modal" data-target="#orderDetails" data-id="'.$row["orderId"].'" class="button viewDetails"/>&nbsp;&nbsp;View&nbsp;&nbsp;</button></td>
@@ -167,10 +170,12 @@
                     <a href="admin.php?approve=all"  id="approvebtn" class="btn btn-head">Approve All</a>
                 </form>
         <!-- Do not modify anything below -->
+      </div>
         <footer>
         </footer>
         <?php include 'orderDetailsModal.php';?>
-
+        <?php include 'declineOrderModal.php';?>
     </body>
 </html>
 <?php include 'jslinks.php'; ?>
+<script src='js/admin.js'></script>

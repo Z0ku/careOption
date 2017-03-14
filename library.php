@@ -36,7 +36,14 @@
 
 		return $conn;
 	}
-
+	$TRADESTATS = [
+		'Pending',
+		'Accepted', //or to process
+		'Processing',
+		'Pick Up',
+		'Completed',
+		'Declined'
+	];
 	function login(){																//Login function, returns flag
 		$flag = 0;
 		if(isset($_POST['email']) && isset($_POST['pass'])){ 						//If a login query was sent
@@ -77,7 +84,15 @@
 	    }
 	    return $flag;
 	}
+	function declineOrder(){
+		$conn = connectDB();
 
+		$sql = 'UPDATE printorders SET orderStatus = 5, comments = "'.$_POST['comments'].'" WHERE orderId = '.$_POST['id'].' AND orderStatus = 0';
+		$result = $conn->query($sql);
+
+			echo "<script> alert('{$sql}'); </script>";
+
+	}
 	function cancelOrder(){															//Cancel Client Order function
 		$conn = connectDB();                                                        //Connect to database function
 		$sql = "DELETE FROM printorders WHERE orderId='".$_POST['cancelOrder']."'";

@@ -9,6 +9,8 @@
         <link rel="shortcut icon" href="icon.png" />
         <title>Dashboard - Care Option</title>
         <?php include 'csslinks.php' ?>
+        <link rel="stylesheet" type="text/css" href="css/client.css" />
+
     </head>
     <body>
 	<ul class="bg-slideshow">
@@ -92,7 +94,7 @@
                         <?php                                                                           //Display  Pending Orders
                             $conn = connectDB();                                                        //Connect to database function
 
-                            $sql = "SELECT * FROM printorders WHERE orderStatus != 3 AND userId = ".$_SESSION['userId'];
+                            $sql = "SELECT * FROM printorders WHERE orderStatus <= 3 AND userId = ".$_SESSION['userId'];
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {                                                //Output data of each row

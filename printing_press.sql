@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2017 at 03:34 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 7.0.9
+-- Generation Time: Mar 14, 2017 at 08:33 PM
+-- Server version: 5.7.17-0ubuntu0.16.04.1
+-- PHP Version: 7.1.2-4+deb.sury.org~xenial+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -41,13 +41,6 @@ CREATE TABLE `printorders` (
   `deliveryAddress` varchar(100) NOT NULL,
   `employeeId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `printorders`
---
-
-INSERT INTO `printorders` (`orderId`, `userId`, `orderName`, `orderDate`, `orderStatus`, `noOfCopies`, `orderDesc`, `file`, `orderType`, `specs`, `comments`, `deliveryAddress`, `employeeId`) VALUES
-(1, 3, 'Test', '2017-03-10', 3, 1, 'This is a test order.', 'COVER.docx', 'Document', 'A4', '', '2 Client Street, Cebu City', NULL);
 
 -- --------------------------------------------------------
 
@@ -108,7 +101,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `printorders`
 --
 ALTER TABLE `printorders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --

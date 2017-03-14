@@ -10,7 +10,7 @@
       $search = ($_GET['search'] !== '')?" AND LOWER(orderName) LIKE LOWER('".$_GET['search']."%')":"";
     }
 
-    $sql = "SELECT * FROM printorders WHERE orderStatus = 3 AND userId = ".$_SESSION['userId'].$search;
+    $sql = "SELECT * FROM printorders WHERE orderStatus > 3 AND userId = ".$_SESSION['userId'].$search;
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {                                                //Output data of each row

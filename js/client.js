@@ -53,7 +53,7 @@ $(document).on('click','.resendOrder',function(){
         $('#order').find('.modal-body').find('[name='+key+']').val(data[key]);
       }
       getSpecs(data['orderType']);
-      $('#order').find('.modal-body').find('[name="specs"]').val(data['specs']);
+      $('#order').find('.modal-body').find('[name="specs"]').find("option[value='"+data['specs']+"']").prop('selected', true);
       $('#order').find('.modal-body').find('label').addClass('active');
     }
   })
