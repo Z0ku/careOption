@@ -70,7 +70,7 @@
                                 </tr>
                             </thead>
                         <tbody class="table-hover" id='orderHistory'>
-                        <?php include 'clientOrderHistory.php'; ?>
+                          <?php include 'clientOrderHistory.php'; ?>
                         </tbody>
                     </table>
                     </div>
@@ -97,19 +97,15 @@
                             $sql = "SELECT * FROM printorders WHERE orderStatus != 4 AND userId = ".$_SESSION['userId'];
                             $result = $conn->query($sql);
                             $btnlabel = 'Cancel';
-                            
+
                             if ($result->num_rows > 0) {                                                //Output data of each row
                                 while($row = $result->fetch_assoc()) {
                                     $btn = 'style="cursor:default; opacity:0.5;" disabled';
                                     if($row["orderStatus"] == 0){                                       //Check order status
-                                        $status = "Pending";
+
                                         $btn = '';
-                                    }else if($row["orderStatus"] == 1){
-                                        $status = "Approved";
-                                    }else if($row["orderStatus"] == 2){
-                                        $status = "Printing";
                                     }else if($row["orderStatus"] == 5){
-                                      $status = "Denied";
+
                                       $btn = '';
                                       $btnlabel = 'OK';
                                     }
@@ -118,7 +114,7 @@
                                         <td>'.$row["orderId"].'</td>
                                         <td>'.$row["orderName"].'</td>
                                         <td>'.$row["orderDate"].'</td>
-                                        <td>'.$status.'</td>
+                                        <td>'.$clientOrderStats[$row['orderStatus']].'</td>
                                         <td><button type="submit" name="cancelOrder" value="'.$row["orderId"].'" class="button deletebtn"' .$btn.'/>'.$btnlabel.'</button></td>
                                         <td><button type="submit" name="download" value="'.$row["orderId"].'" class="button deletebtn"/>&nbsp;&nbsp;DL&nbsp;&nbsp;</button></td>
                                         <td><button type="button" data-toggle="modal" data-target="#orderDetails" data-id="'.$row["orderId"].'" class="button viewDetails"/>&nbsp;&nbsp;View&nbsp;&nbsp;</button></td>

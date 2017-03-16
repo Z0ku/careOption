@@ -1,7 +1,7 @@
 <?php //Starts session
     include("library.php");
     startsession("admin")
-?>  
+?>
 
 <!DOCTYPE html>
 <html>
@@ -9,10 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="icon.png" />
         <title>Modify Users - Care Option</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <link rel="stylesheet" type="text/css" href="css/style_form.css" />
-        <link rel="stylesheet" type="text/css" href="css/style_admin.css" />
-        <link rel="stylesheet" type="text/css" href="css/style_table.css" />
+        <?php include 'csslinks.php' ?>
 
 
     </head>
@@ -25,7 +22,7 @@
             <li><span>Image 05</span><div><h3></h3></div></li>
             <li><span>Image 06</span><div><h3></h3></div></li>
 	</ul>
-        
+
 	<header>
 		<a  href="admin.php">
 			<img id="homebtn" src="img/home.jpg"  alt="Home">
@@ -55,7 +52,7 @@
                 $status = 'Update';
                 $sql = "SELECT * FROM users WHERE userId='".$_POST['toupdate']."'";
                 $result = $conn->query($sql);
-                
+
                 if($result->num_rows == 1){
                     $row = $result->fetch_assoc();
                     $userIdToUpdate = $row['userId'];
@@ -75,28 +72,29 @@
                     $info['role'] = $role;
                     $info['address'] = $row['address'];
                 }
-                
+
             }else if(isset($_POST['update'])){
                 updateUser();
-            }else if(isset($_POST['delete'])){      
+            }else if(isset($_POST['delete'])){
                 $sql = "DELETE FROM users WHERE userId='".$_POST['delete']."'";
                 $result = $conn->query($sql);
             }else if(isset($_POST['add'])){
                 $flag = addUser();
             }
         ?>
-        
+
         <div id="admin">
             <div id="logo">
 		<p><a href="admin.php"><img id="logopic" src="logo.png" alt="Company"/></a></p>
             </div>
-            
+
             <div id="title">
-                <h1>Modify Users</h1>    
+                <h1>Modify Users</h1>
             </div>
-            
+
             <div id="modifyusertable">
             <p id="userdesc">Users</p>
+            <input style='height:50px;width:100%' type="text" placeholder="Search Users" id='searchUserEdits' autocomplete="off" value=""/>
             <form action="modifyuser.php" method="post">
             <div class="table">
             <table class="table-fill">
@@ -113,61 +111,19 @@
                         <th class="text-left">Delete</th>
                     </tr>
                 </thead>
-                <tbody class="table-hover">
-                 <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "printing_press";
-
-                    // Create connection
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    // Check connection
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    } 
-
-                    $sql = "SELECT * FROM users";
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while($row = $result->fetch_assoc()) {
-                            $employee = $admin = "N/A";
-                            if($row['employeeId'] != NULL){
-                                $employee = $row['employeeId'];
-                            }else if($row['ownerId'] != NULL){
-                                $admin = $row['ownerId'];
-                            }
-                            $email = explode("@", $row["email"]);
-                            echo '
-                            <tr id="right">
-                                <td>'.$row["userId"].'</td>
-                                <td>'.$row["name"].'</td>
-                                <td>'.$email[0].'@<br>'.$email[1].'</td>
-                                <td>'.$row["contactNo"].'</td>
-                                <td>'.$row["address"].'</td>
-                                <td>'.$employee.'</td>
-                                <td>'.$admin.'</td>
-                                <td><button type="submit" name="toupdate" value="'.$row["userId"].'" class="button deletebtn"/>&nbsp&nbsp⟹&nbsp&nbsp</button></td>
-                                <td><button type="submit" name="delete" value="'.$row["userId"].'" class="button deletebtn"/>&nbsp&nbsp⟹&nbsp&nbsp</button></td>
-                            </tr>
-                            ';
-                        }
-                    }
-                    $conn->close();
-                ?>
+                <tbody class="table-hover" id='userEdits'>
+                 <?php include 'searchUserEdit.php'; ?>
                 </tbody>
             </table>
             </div>
             </form>
             </div>
-            
+
             <div id="modifyuserbox">
                 <h1><?php echo $status;?> User <?php echo $userToUpdate;?></h1>
-                <div id="modifyuser">   
+                <div id="modifyuser">
                     <div class="form">
-                        <div id="signup">             
+                        <div id="signup">
                         <form action="modifyuser.php" method="post">
                         <div class="field-wrap">
                             <label class='<?php echo $hasval; ?>'>
@@ -200,7 +156,7 @@
                                 Address<span class="req">*</span>
                             </label>
                               <input type="text" name="address" required autocomplete="off" value='<?php echo $info['address'];?>'/>
-                        </div>   
+                        </div>
                         <div class="top-row">
                             <div class="field-wrap">
                                 <label>
@@ -214,7 +170,7 @@
                                 </label>
                                 <input type="password" name="confirmpass" required autocomplete="off"/>
                             </div>
-                        </div>    
+                        </div>
                         <center>
                             <?php
                                 if($status == 'Add'){
@@ -257,3 +213,5 @@
         </footer>
     </body>
 </html>
+<?php include 'jslinks.php'; ?>
+<script src='js/admin.js'></script>

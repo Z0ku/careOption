@@ -1,4 +1,8 @@
 <?php
+
+	foreach($_POST as $key=>$value){
+		$_POST[$key] = addslashes($_POST[$key]); // escapes characters like ' to prevent sql errors;
+	}
 	function startsession($page){													//Session start function
 		session_start();
 		switch($page){
@@ -36,7 +40,7 @@
 
 		return $conn;
 	}
-	$TRADESTATS = [
+	$clientOrderStats = [ //client Order
 		'Pending',
 		'Accepted', //or to process
 		'Processing',
@@ -44,6 +48,11 @@
 		'Completed',
 		'Declined'
 	];
+	$orderTypes = [
+		'Receipt',
+		'Documents'
+	];
+
 	function login(){																//Login function, returns flag
 		$flag = 0;
 		if(isset($_POST['email']) && isset($_POST['pass'])){ 						//If a login query was sent
@@ -89,8 +98,6 @@
 
 		$sql = 'UPDATE printorders SET orderStatus = 5, comments = "'.$_POST['comments'].'" WHERE orderId = '.$_POST['id'].' AND orderStatus = 0';
 		$result = $conn->query($sql);
-
-			echo "<script> alert('{$sql}'); </script>";
 
 	}
 	function cancelOrder(){															//Cancel Client Order function
@@ -146,7 +153,7 @@
 	        $result = $conn->query($sql);
 	        if($result->num_rows == 0){
 	            $pass = hash("sha512", $_POST['password']);
-	            $sql = "INSERT INTO users VALUES (23333,'".$_POST['name']."', '".$_POST['email']."', '".$pass."', '".$_POST['contactNo']."', '".$_POST['address']."', NULL, NULL)";
+	            $sql = "INSERT INTO users VALUES (null,'".$_POST['name']."', '".$_POST['email']."', '".$pass."', '".$_POST['contactNo']."', '".$_POST['address']."', NULL, NULL)";
 	            if ($conn->query($sql) === TRUE) {
 	                $flag = 0;														//Successfully Registered
 	            } else {

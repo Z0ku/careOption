@@ -8,7 +8,7 @@
 }
 
 body {
-	font-family: 'Avenir', Helvetica, sans-serif;
+	font-family: Avenir, Helvetica, sans-serif;
 	padding: 0;
 	margin: 0;
 	background-color: black;
@@ -46,11 +46,12 @@ a:active {
     left: 0px;
     z-index: -1;
     margin-top: 35px;
-		background-color: black;
+	background-color: black;
 }
 .bg-slideshow:after {
     content: '';
     background: transparent url(../bg/pattern.png) repeat top left;
+    z-index: 1;
 }
 .bg-slideshow li span {
     width: 100%;
@@ -189,7 +190,7 @@ a:active {
 
 
 #logo {
-	margin-top: 25px;
+	margin-top: 60px;
 	display: block;
 	position:fixed;
 	margin-left: 60px;
@@ -217,8 +218,9 @@ header {
 	position: fixed;
 	left: 0;
 	top: 0;
-	box-shadow: 0px 3px 5px;
+	box-shadow: 0px 3px 5px black;
 	padding-top: 10px;
+    z-index: 100;
 }
 
 input{
@@ -248,7 +250,7 @@ li {
 }
 
 #homebtn{
-	margin-top:.4%;
+	margin-top:-0.2%;
 	margin-left:2%;
     width:30px;
     height:30px;
@@ -260,7 +262,6 @@ li {
 .btn {
 
   font-size: 15px;
-  border-radius: 6px;
   -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
           transition: border .25s linear, color .25s linear, background-color .25s linear;
 
@@ -336,18 +337,10 @@ li {
 }
 
 
-.cd-modal-action {
-    margin-top: -2%;
-    position: relative;
-}
-
 .cd-modal-action .btn, .cd-modal-action .cd-modal-bg {
   padding: 8px 26px;
-  line-height: 5;
-  height: 3em;
   background-color: rgba(255,0,0,0.6);
 }
-
 /*Unused below*/
 
 #profile {
@@ -379,8 +372,10 @@ li {
  .btn-profile{
     padding: 8px 26px;
     line-height: 5;
-  }
+}
+
  .btn-head{
     padding: 6px 22px;
     line-height: 1;
-  }
+    margin-top: -3px;
+}

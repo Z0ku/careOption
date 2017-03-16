@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 14, 2017 at 08:33 PM
+-- Generation Time: Mar 17, 2017 at 01:55 AM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.1.2-4+deb.sury.org~xenial+1
 
@@ -42,6 +42,20 @@ CREATE TABLE `printorders` (
   `employeeId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `printorders`
+--
+
+INSERT INTO `printorders` (`orderId`, `userId`, `orderName`, `orderDate`, `orderStatus`, `noOfCopies`, `orderDesc`, `file`, `orderType`, `specs`, `comments`, `deliveryAddress`, `employeeId`) VALUES
+(2, 3, 'Test', '2017-02-16', 4, 12, 'The quick borwn fox jumps over the lazy dog', '50_Fili Prayer.docx', 'Receipt', 'None', '', '2 Client Street, Cebu City', 0),
+(3, 3, 'Test', '2017-01-16', 4, 12, 'The quick borwn fox jumps over the lazy dog', '50_Fili Prayer.docx', 'Receipt', 'None', '', '2 Client Street, Cebu City', 0),
+(4, 3, 'Test', '2017-03-16', 4, 12, 'The quick borwn fox jumps over the lazy dog', '50_Fili Prayer.docx', 'Receipt', 'None', '', '2 Client Street, Cebu City', 0),
+(5, 3, 'Test', '2017-03-16', 4, 12, 'The quick borwn fox jumps over the lazy dog', '49_To Do List.docx', 'Receipt', 'None', '', '2 Client Street, Cebu City', 0),
+(6, 3, 'Test', '2017-03-16', 4, 12, 'The quick borwn fox jumps over the lazy dog', 'test.docx', 'Receipt', 'None', '', '2 Client Street, Cebu City', 0),
+(8, 3, 'Test', '2017-03-17', 4, 12, 'The quick borwn fox jumps over the lazy dog', 'test.docx', 'Receipt', 'None', '', '2 Client Street, Cebu City', 0),
+(9, 4, 'myFiles', '2017-03-17', 1, 2, '999999', 'test.docx', 'Document', 'A4', '', 'Lahug', NULL),
+(10, 4, 'plswork', '2017-03-17', 4, 1, '', 'test.docx', 'Document', 'A3', '', 'Lahug', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -64,12 +78,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userId`, `name`, `email`, `password`, `contactNo`, `address`, `employeeId`, `ownerId`) VALUES
+(1, 'Admin', 'admin@gmail.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', '091234567', '12 Admin St.', NULL, 0),
 (2, 'Employee', 'employee@gmail.com', 'ada3197469dbc37df5789eda636a6c4c24f4cf368ec089f640c7981b2a450fe9be9a0d6896ec5714cb00a1e1b63571f34e9d63c5845b165211fcdab83651f2a5', '091234567', '16 Employee Street, Employee Town', 0, NULL),
 (3, 'Client', 'client@gmail.com', '85d7741af27f18cbefc7fdc96d4465f63d4e8da2126a196f87c4f7e1f65298855a0e4a4a8986936eae95e2b899e837c48ae39d8048f907ebd0095c87c49fb0af', '091234567', '2 Client Street, Cebu City', NULL, NULL),
-(121, 'Admin', 'admin@gmail.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', '091234567', '12 Admin St.', NULL, 0),
-(233, '123', 't33est@gmail.com', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', '123', '123', NULL, NULL),
-(12312, 'Yuchipashe', 'yuchipashe@gmail.com', '401b09eab3c013d4ca54922bb802bec8fd5318192b0a75f201d8b3727429080fb337591abd3e44453b954555b7a0812e1081c39b740293f765eae731f5a65ed1', '09333227884', '15 Paseo Luis, Maria Luisa', NULL, NULL),
-(23333, 'asdf', 'asdf!@adsf', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', '123', '123', NULL, NULL);
+(4, 'riz', 'rizaller.amolo@gmail.com', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', '222', 'Lahug', NULL, NULL),
+(5, 'O\'reilly', 'oreailly@gmail.com', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', '432', 'Cebu', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -101,18 +114,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `printorders`
 --
 ALTER TABLE `printorders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT for table `users`
 --
-
---
--- Constraints for table `printorders`
---
-ALTER TABLE `printorders`
-  ADD CONSTRAINT `fk_employeeId_users_printOrders` FOREIGN KEY (`employeeId`) REFERENCES `users` (`employeeId`),
-  ADD CONSTRAINT `fk_userId_users_printOrders` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`);
-
+ALTER TABLE `users`
+  MODIFY `userId` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

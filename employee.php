@@ -73,6 +73,8 @@
                         <th class="text-left">Date</th>
                         <th class="text-left">Status</th>
                         <th class="text-left">Download</th>
+                        <th class="text-left">Details</th>
+
                     </tr>
                 </thead>
                 <tbody class="table-hover">
@@ -97,6 +99,7 @@
                                       echo '<td><button type="submit" name="delivered" value="'.$row["orderId"].'" class="button deletebtn"/>Delivered</button></td>';
                                     }
                                     echo '<td><button type="submit" name="download" value="'.$row["orderId"].'" class="button deletebtn"/>Download</button></td>
+                                    <td><button type="button" data-toggle="modal" data-target="#orderDetails" data-id="'.$row["orderId"].'" class="button viewDetails"/>&nbsp;&nbsp;View&nbsp;&nbsp;</button></td>
                                 </tr>
                                 ';
                             }
@@ -112,6 +115,8 @@
 
             <div id="inventory">
             <p id="inventorydesc">Approved Orders</p>
+            <input style='height:50px;width:100%' type="text" placeholder="Search Accepted Orders" id='searchAccepted' autocomplete="off" value=""/>
+
             <div class="table">
             <table class="table-fill">
                 <thead>
@@ -119,39 +124,15 @@
                         <th class="text-left">ID</th>
                         <th class="text-left">Client</th>
                         <th class="text-left">Name</th>
-						<th class="text-left">Copies</th>
+						            <th class="text-left">Copies</th>
                         <th class="text-left">Date</th>
                         <th class="text-left">Accept Order</th>
                         <th class="text-left">Download</th>
+                        <th class="text-left">Details</th>
                     </tr>
                 </thead>
-                <tbody class="table-hover">
-                <?php
-                    $conn = connectDB();                                                //Connect to database function
-
-                    $sql = "SELECT printorders.*,users.name  FROM printorders INNER JOIN users ON printorders.userId = users.userId WHERE orderStatus = 1";
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while($row = $result->fetch_assoc()) {
-                            echo '
-                            <tr id="left">
-                                <td>'.$row["orderId"].'</td>
-                                <td>'.$row["name"].'</td>
-                                <td>'.$row["orderName"].'</td>
-								<td>'.$row["noOfCopies"].'</td>
-                                <td>'.$row["orderDate"].'</td>
-                                <td><button type="submit" name="accept" value="'.$row["orderId"].'" class="button deletebtn"/>Accept</button></td>
-                                <td><button type="submit" name="download" value="'.$row["orderId"].'" class="button deletebtn"/>&nbsp;&nbsp;&nbsp;DL&nbsp;&nbsp;&nbsp;</button></td>
-                                <td><button type="button" data-toggle="modal" data-target="#orderDetails" data-id="'.$row["orderId"].'" class="button viewDetails"/>&nbsp;&nbsp;View&nbsp;&nbsp;</button></td>
-                              </tr>
-                            ';
-                        }
-                    } else {
-                        echo "<h4>No Approved Orders</h4>";
-                    }
-                    $conn->close();
-                ?>
+                <tbody class="table-hover" id='accepted'>
+                  <?php include 'searchAccepted.php' ?>
                 </tbody>
             </table>
             </div>
@@ -168,3 +149,4 @@
     </body>
 </html>
 <?php include 'jslinks.php'; ?>
+<script src='js/employee.js'></script>

@@ -1,13 +1,15 @@
 <?php
+    $search = "";
     if(isset($_GET['search'])){
       include('library.php');
       startsession('client');
+      $search = (trim($_GET['search']) !== '')?" AND LOWER(orderName) LIKE LOWER('".trim($_GET['search'])."%')":"";
+
     }                                                               //Display Order History
     $conn = connectDB();                                                        //Connect to database function
-    $search = "";
+
 
     if(isset($_GET['search'])){
-      $search = ($_GET['search'] !== '')?" AND LOWER(orderName) LIKE LOWER('".$_GET['search']."%')":"";
     }
 
     $sql = "SELECT * FROM printorders WHERE orderStatus > 3 AND userId = ".$_SESSION['userId'].$search;
