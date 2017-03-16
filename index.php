@@ -9,9 +9,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	   	<link rel="shortcut icon" href="icon.png" />
         <title>Login - Care Option</title>
-
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/style_form.css" />
+				<link rel="stylesheet" type="text/css" href="css/style_form.css" />
     </head>
 
     <body>
@@ -27,7 +27,7 @@
 	<div id="logo">
 		<p><a href="index.php"><img id="logopic" src="logo.png" alt="Company"/></a></p>
 	</div>
-	
+
 	<header>
 		<a href="index.php">
             <img id="homebtn" src="img/home.jpg"  alt="Home">
@@ -43,9 +43,9 @@
         		<p><em>"Have Hope. Hold On, Pain Ends..."</em></p>
                 <h2>Login</h2>
 
-                <!--Login form start -->  
-                 <div class="form">   
-                    <form method ="POST" action="index.php"> 
+                <!--Login form start -->
+                 <div class="form">
+                    <form method ="POST" action="index.php">
 
                     	<!--Email-->
 	                    <div class="field-wrap">
@@ -60,7 +60,7 @@
 	                    </div>
 
 	                    <?php //Checks username and password
-	                    	
+
 	                    	$flag = login();	//Login function, returns flag
 
 						    if($flag == 1){
@@ -75,13 +75,13 @@
 	                    <span class="cd-modal-action">
 	        			     <a href="#"  onclick="document.forms[0].submit();" class="btn">Login</a>
 	                    </span> &nbsp;&nbsp;&nbsp;&nbsp;
-	                    
+
 	                    <span class="cd-modal-action">
 	        			     <a href="register.php" class="btn">Register</a>
 	                    </span>
 	                    <input type="submit" style="color: transparent; background-color: transparent; border-color: transparent; cursor: default;">
                     </form>
-                     <!--Login form ends -->  
+                     <!--Login form ends -->
                 </div>
             </div>
         <!-- Do not modify anything below -->
@@ -93,3 +93,24 @@
         </footer>
     </body>
 </html>
+
+
+<!-- To Do list
+1) Check pic with expectations
+2) Include bootstrap in every site and fix css
+3) 
+
+Frequency per user (overall)
+Frequency of all users in weekly, monthly and yearly
+Frequency per Service Type-in (Use badges)
+Top 10 users (frequency, approved)
+
+Time start: 5:00
+Time End: 12:00
+
+Time Allocated: 7 Hours
+
+5:00 - 6:00 -> Fix CSS, etc
+
+
+-->

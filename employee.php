@@ -43,8 +43,10 @@
                 $result = $conn->query($sql);
             }else if(isset($_POST['download'])){
                 downloadFile();
+            }else if(isset($_POST['delivered'])){
+              $sql = "UPDATE printorders SET orderStatus = 4 WHERE orderId = {$_POST['delivered']} AND employeeId = {$_SESSION['employeeId']}";
+              $result = $conn->query($sql);
             }
-
         ?>
 
 
@@ -59,7 +61,7 @@
 
             <form action="employee.php" method="post">
             <div id="user">
-            <p id="userdesc">Current Printing Orders</p>
+            <p id="userdesc">Current Orders</p>
             <div class="table">
             <table class="table-fill">
                 <thead>
@@ -77,7 +79,7 @@
                     <?php
                         $conn = connectDB();                                                //Connect to database function
 
-                        $sql = "SELECT printorders.*,users.name  FROM printorders INNER JOIN users ON printorders.userId = users.userId WHERE orderStatus = 2 AND printorders.employeeId = ".$_SESSION['employeeId'];
+                        $sql = "SELECT printorders.*,users.name  FROM printorders INNER JOIN users ON printorders.userId = users.userId WHERE (orderStatus = 2 OR orderStatus = 3) AND printorders.employeeId = ".$_SESSION['employeeId'];
                         $result = $conn->query($sql);
                         if ($result->num_rows > 0) {
                             // output data of each row
@@ -88,9 +90,13 @@
                                     <td>'.$row["name"].'</td>
                                     <td>'.$row["orderName"].'</td>
 									                  <td>'.$row["noOfCopies"].'</td>
-                                    <td>'.$row["orderDate"].'</td>
-                                    <td><button type="submit" name="printed" value="'.$row["orderId"].'" class="button deletebtn"/>Printed</button></td>
-                                    <td><button type="submit" name="download" value="'.$row["orderId"].'" class="button deletebtn"/>&nbsp;&nbsp;&nbsp;DL&nbsp;&nbsp;&nbsp;</button></td>
+                                    <td>'.$row["orderDate"].'</td>';
+                                    if($row["orderStatus"] == 2){
+                                      echo '<td><button type="submit" name="printed" value="'.$row["orderId"].'" class="button deletebtn"/>Printed</button></td>';
+                                    }else{
+                                      echo '<td><button type="submit" name="delivered" value="'.$row["orderId"].'" class="button deletebtn"/>Delivered</button></td>';
+                                    }
+                                    echo '<td><button type="submit" name="download" value="'.$row["orderId"].'" class="button deletebtn"/>Download</button></td>
                                 </tr>
                                 ';
                             }

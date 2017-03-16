@@ -94,9 +94,10 @@
                         <?php                                                                           //Display  Pending Orders
                             $conn = connectDB();                                                        //Connect to database function
 
-                            $sql = "SELECT * FROM printorders WHERE orderStatus <= 3 AND userId = ".$_SESSION['userId'];
+                            $sql = "SELECT * FROM printorders WHERE orderStatus != 4 AND userId = ".$_SESSION['userId'];
                             $result = $conn->query($sql);
-
+                            $btnlabel = 'Cancel';
+                            
                             if ($result->num_rows > 0) {                                                //Output data of each row
                                 while($row = $result->fetch_assoc()) {
                                     $btn = 'style="cursor:default; opacity:0.5;" disabled';
@@ -107,6 +108,10 @@
                                         $status = "Approved";
                                     }else if($row["orderStatus"] == 2){
                                         $status = "Printing";
+                                    }else if($row["orderStatus"] == 5){
+                                      $status = "Denied";
+                                      $btn = '';
+                                      $btnlabel = 'OK';
                                     }
                                     echo '
                                     <tr id="left">
@@ -114,7 +119,7 @@
                                         <td>'.$row["orderName"].'</td>
                                         <td>'.$row["orderDate"].'</td>
                                         <td>'.$status.'</td>
-                                        <td><button type="submit" name="cancelOrder" value="'.$row["orderId"].'" class="button deletebtn"' .$btn.'/>Cancel</button></td>
+                                        <td><button type="submit" name="cancelOrder" value="'.$row["orderId"].'" class="button deletebtn"' .$btn.'/>'.$btnlabel.'</button></td>
                                         <td><button type="submit" name="download" value="'.$row["orderId"].'" class="button deletebtn"/>&nbsp;&nbsp;DL&nbsp;&nbsp;</button></td>
                                         <td><button type="button" data-toggle="modal" data-target="#orderDetails" data-id="'.$row["orderId"].'" class="button viewDetails"/>&nbsp;&nbsp;View&nbsp;&nbsp;</button></td>
                                     </tr>
